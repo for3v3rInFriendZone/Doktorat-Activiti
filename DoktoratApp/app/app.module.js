@@ -1,6 +1,6 @@
 (function() {
 	"use strict";
-
+	
 	angular
-		.module('doktorat-app', ['doktorat-app-test']);
+		.module('doktorat', ['doktorat-core', 'doktorat-user']);
 })();

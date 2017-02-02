@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html >
+	<head>
+	  <meta charset="UTF-8">
+	  <title>Login Form</title>
+
+	  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/normalize/5.0.0/normalize.min.css">
+	  <link rel="stylesheet" href="../../DoktoratApp/assets/css/styleLogin.css">
+
+	  <script src="https://cdnjs.cloudflare.com/ajax/libs/prefixfree/1.0.7/prefixfree.min.js"></script>
+
+	</head>
+
+	<body>
+
+		<h1 class="text-center"> <span style="color: yellow;">PhD </span> <span style="color: lightblue;">Redmine </span> </h1>
+		<hr/>
+
+	  <div class="login">
+		<h1>Login</h1>
+	    <form class="state-form form-horizontal" name="ulc.form" ng-submit="ulc.submitForm()" novalidate>
+	    	<div class="form-group">
+		    	<div>
+			    	<input type="text" name="username" ng-focus="ulc.focus()" ng-model="ulc.username" placeholder="Username" required/>
+			        <input type="password" name="password" ng-focus="ulc.focus()" ng-model="ulc.password" placeholder="Password" required/>
+			    </div>
+		        <button type="submit" class="btn btn-primary btn-block btn-large">Let me in.</button>
+		        <p class="text-center" ng-show="ulc.loginFailed" style="color: red;"> Your username or password is incorrect.</p>
+		    </div>
+	    </form>
+	</div>
+
+	</body>
+</html>
