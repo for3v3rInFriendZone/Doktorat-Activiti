@@ -14,51 +14,52 @@
 			url: '/:username',
 			views:{
 				'main@': {
+					resolve: {
+						listOfTasks: getTaskList
+					},
 					templateUrl: "app/components/user/main.html",
 					controller: "UserController",
 					controllerAs: "ucr"
 				}
 			}
 		})
-		.state("main.userPage", {
-			url: '/profile/:username',
+		.state("main.userTasks", {
+			url: '/:username/tasks',
 			views:{
 				'main@': {
-					templateUrl: "app/components/user/mainUserPage.html",
+					resolve: {
+						listOfTasks: getTaskList
+					},
+					templateUrl: "app/components/user/taskList.html",
 					controller: "UserController",
 					controllerAs: "ucr"
 				}
 			}
 		})
-		.state("main.userEdit", {
-			url: '/profile/:username/:id',
+		.state("main.userTask", {
+			url: '/:username/task/:taskId',
 			views:{
 				'main@': {
 					resolve: {
-						selectedUser: getUserToEdit,
-						categories: getCategories
+						task: getTask
 					},
-					templateUrl: "app/components/user/user.editUser.html",
-					controller: "UserEditController",
-					controllerAs: "uec"
+					templateUrl: "app/components/user/mainUserPage.html",
+					controller: "UserTaskController",
+					controllerAs: "utc"
 				}
 			}
 		});
 
 
-		getUsers.$inject = ['User'];
-		function getUsers(User) {
-			return User.query().$promise;
+		getTaskList.$inject = ['$http'];
+		function getTaskList($http){
+			return $http.get('http://localhost:8080/activiti-rest/service/runtime/tasks');
 		}
 
-		getUserToEdit.$inject = ['User', '$stateParams'];
-		function getUserToEdit(User, $stateParams) {
-			return User.get({id: $stateParams.id}).$promise;
+		getTask.$inject = ['$http', '$stateParams'];
+		function getTask($http, $stateParams){
+			return $http.get('http://localhost:8080/activiti-rest/service/runtime/tasks/' + $stateParams.taskId);
 		}
 
-		getCategories.$inject = ['Category'];
-		function getCategories(Category) {
-			return Category.query().$promise;
-		}
 	}
 })();

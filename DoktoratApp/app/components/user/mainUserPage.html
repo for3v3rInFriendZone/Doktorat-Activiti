@@ -7,47 +7,34 @@
 				<br/><br/><br/><br/>
 				<div class="panel panel-info">
 		            <div class="panel-heading text-center">
-		              <h3 class="panel-title">{{ucr.nameAndSurname}}</h3>
+		              <h3 class="panel-title">Tasks</h3>
 		            </div>
 		            <div class="panel-body">
 		              <div class="row">
-		              	<form class="state-form form-horizontal text-center" name="hic.form" novalidate>
+		              	<form class="state-form form-horizontal text-center" name="utc.form" novalidate>
 			                <div class="form-group">
-				                <div class="col-sm-8 col-sm-offset-2"> 
-				                  <img class="img-responsive img-circle col-sm-offset-5" alt="User Pic" src="{{ucr.user.image}}"  width="110" height="110"/>
+				                <div class="col-sm-8 col-sm-offset-2">
 				                  <br/>
 				                  <table class="table table-user-information">
 				                    <tbody>
 				                      <tr>
-				                        <td> <b>Firstname: </b> </td>
-				                        <td>{{ucr.user.firstname}}</td>
+				                        <td> <b>Biografija: </b> </td>
+				                        <td><input type="checkbox" ng-model="utc.params.biografija"></td>
 				                      </tr>
 				                      <tr>
-				                        <td><b>Lastname: </b></td>
-				                        <td>{{ucr.user.lastname}}</td>
-				                      </tr>
-				                      <tr>
-				                        <td><b>Username: </b></td>
-				                        <td>{{ucr.user.username}}</td>	                       
-				                      </tr>	                    
-				                       <tr>
-				                        <td><b>Type: </b></td>
-				                        <td>{{ucr.user.type}}</td>
-				                      </tr>
-				                        <td><b>Category: </b></td>
-				                        <td>{{ucr.user.category.name}}</td>
+				                        <td><b>Naslov teme: </b></td>
+				                        <td><input type="text" ng-model="utc.params.naslovTeme"></td>
 				                      </tr>
 				                    </tbody>
 		                  		</table>
 						    	</div>
-				              </div>			           		                
+				              </div>
 		                </form>
-		              </div>	         
+		              </div>
            			</div>
            			<div class="panel-footer">
-                        <div class="text-center">     
-                            <button type="button" ng-click="ucr.edit()" class="btn btn-sm btn-warning" data-toggle="tooltip" data-placement="bottom" title="Edit"><i class="fa fa-pencil"></i></button>
-                            <button ng-show="!ucr.editFlag && ucr.currentState == 'userEdit'" type="button" ng-click="ucr.remove(ucr.user.id)" class="btn btn-sm btn-danger" data-toggle="tooltip" data-placement="bottom" title="Remove"><i class="fa fa-trash"></i></button>                  
+                        <div class="text-center">
+                            <button type="button" ng-click="utc.completeTask()" class="btn btn-sm btn-success" data-toggle="tooltip" data-placement="bottom" title="Complete task"><i class="fa fa-check"></i></button>
                         </div>
                     </div>
 		        </div>

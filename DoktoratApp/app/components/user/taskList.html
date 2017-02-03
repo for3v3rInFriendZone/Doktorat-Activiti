@@ -1,0 +1,39 @@
+
+<!-- Header -->
+<section style="background-color: gray;">
+	<div class="container">
+		<div class="row">
+			<div class="col-sm-10 col-sm-offset-1 toppad">
+				<br/><br/><br/><br/>
+				<div class="panel panel-info">
+		            <div class="panel-heading text-center">
+		              <h3 class="panel-title">Zadaci</h3>
+		            </div>
+		            <div class="panel-body">
+		              <div class="row">
+		              	<form class="state-form form-horizontal text-center" name="ucr.form" novalidate>
+			                <div class="form-group">
+				                <div class="col-sm-8 col-sm-offset-2">
+				                  <br/>
+				                  <table class="table table-hover table-user-information">
+                            <thead>
+                              <th class="text-center">Naziv</th>
+                              <th class="text-center">Datum stvaranja</th>
+                            </thead>
+				                    <tbody>
+				                      <tr ng-repeat="task in ucr.listOfTasks">
+				                        <td ng-click="ucr.viewTask(task.id)"> {{task.name}} </td>
+				                        <td ng-click="ucr.viewTask(task.id)">{{task.createTime | date:'dd/MM/yyyy'}} </td>
+				                      </tr>
+				                    </tbody>
+		                  		</table>
+						    	      </div>
+				              </div>
+		                </form>
+		              </div>
+           			</div>
+		        </div>
+			</div>
+		</div>
+	</div>
+</section>

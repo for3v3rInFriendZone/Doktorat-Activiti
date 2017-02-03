@@ -5,12 +5,22 @@
 		.module('doktorat-user')
 		.controller('UserController', UserController);
 
-	UserController.$inject = ['$state', 'localStorageService'];
-	function UserController($state, localStorageService) {
+	UserController.$inject = ['$http', '$state', 'localStorageService', 'listOfTasks'];
+	function UserController($http, $state, localStorageService, listOfTasks) {
 
 		var ucr = this;
 		ucr.user = localStorageService.get('user');
-		var sss = $state.href($state.current.name, $state.params, {absolute: true});
+		ucr.currentState = $state.current.name;
+		ucr.listOfTasks = [];
+		ucr.viewTask = viewTask;
+		ucr.closeModal = closeModal;
+		ucr.savePass = savePass;
+
+		for(var i=0; i<listOfTasks.data.data.length; i++){
+			if(listOfTasks.data.data[i].assignee === ucr.user.id) {
+				ucr.listOfTasks.push(listOfTasks.data.data[i]);
+			}
+		}
 
 		/**
 		 * Check if user is loged in.
@@ -25,16 +35,8 @@
 				$state.go('main.user', {username: ucr.user.id});
 		}
 
-
-		ucr.currentState = $state.current.name;
-		ucr.edit = edit;
-		ucr.closeModal = closeModal;
-		ucr.savePass = savePass;
-
-		ucr.nameAndSurname = ucr.user.firstname + ' ' + ucr.user.lastname;
-
-		function edit() {
-			$state.go('main.userEdit', {username: ucr.user.username, id: ucr.user.id});
+		function viewTask(id) {
+			$state.go('main.userTask', {username: ucr.user.id, taskId: id});
 		}
 
 		function closeModal() {
