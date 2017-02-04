@@ -11,16 +11,10 @@
 		var ucr = this;
 		ucr.user = localStorageService.get('user');
 		ucr.currentState = $state.current.name;
-		ucr.listOfTasks = [];
+		ucr.listOfTasks = listOfTasks.data.data;
 		ucr.viewTask = viewTask;
 		ucr.closeModal = closeModal;
 		ucr.savePass = savePass;
-
-		for(var i=0; i<listOfTasks.data.data.length; i++){
-			if(listOfTasks.data.data[i].assignee === ucr.user.id) {
-				ucr.listOfTasks.push(listOfTasks.data.data[i]);
-			}
-		}
 
 		/**
 		 * Check if user is loged in.

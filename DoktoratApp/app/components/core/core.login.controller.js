@@ -5,8 +5,8 @@
 		.module('doktorat-core')
 		.controller('LoginController', LoginController);
 
-	LoginController.$inject = ['$http', '$state', 'localStorageService', '$base64'];
-	function LoginController($http, $state, localStorageService, $base64) {
+	LoginController.$inject = ['$http', '$state', 'localStorageService', '$base64', 'processes'];
+	function LoginController($http, $state, localStorageService, $base64, processes) {
 
 		var ulc = this;
 
@@ -14,18 +14,26 @@
 		ulc.focus = focus;
 		ulc.userPage = userPage;
 		ulc.loginFailed = false;
+		ulc.processes = processes.data.data;
 
 		function submitForm() {
 
-			$http.defaults.headers.common['Authorization'] = 'Basic ' + $base64.encode(ulc.username + ':' + ulc.password);
 			$http.get('http://localhost:8080/activiti-rest/service/identity/users/' + ulc.username)
 			.then(function(dataSuccess){
 				ulc.user = dataSuccess.data;
 
-				if(checkStartProcess()) {
+				if(ulc.password != ulc.user.id) {
+						ulc.loginFailed = true;
+						return;
+				}
+
+				/**
+				* Checks if process has already been started. This way, it wont after login always start a new process.
+				*/
+				if(ulc.processes.length == 0) {
 					startProcess(ulc.user.id);
 				}
-				
+
 				localStorageService.set('user', ulc.user);
 				$state.go('main.user', {username: ulc.user.id});
 
@@ -57,20 +65,6 @@
 			$http.post('http://localhost:8080/activiti-rest/service/runtime/process-instances', payload);
 		}
 
-		/**
-		* Checks if process has already been started. This way, it wont after login always start a new process.
-		*/
-		function checkStartProcess() {
-			$http.get('http://localhost:8080/activiti-rest/service/runtime/process-instances').then(function(response){
-				var arrayProcesses = response.data.data;
-				for(var i=0; i<arrayProcesses.length; i++) {
-					if(arrayProcesses[i].processDefinitionKey === 'doktoratApp') {
-						return false;
-					}
-				}
-				return true;
-			});
-		}
 	}
 
 })();

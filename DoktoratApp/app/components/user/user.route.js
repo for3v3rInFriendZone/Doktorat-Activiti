@@ -41,7 +41,9 @@
 			views:{
 				'main@': {
 					resolve: {
-						task: getTask
+						taskForm: getTaskForm,
+						task: getTask,
+						taskVariables: getTaskVariables
 					},
 					templateUrl: "app/components/user/mainUserPage.html",
 					controller: "UserTaskController",
@@ -51,14 +53,24 @@
 		});
 
 
-		getTaskList.$inject = ['$http'];
-		function getTaskList($http){
-			return $http.get('http://localhost:8080/activiti-rest/service/runtime/tasks');
+		getTaskList.$inject = ['$http', '$stateParams'];
+		function getTaskList($http, $stateParams){
+			return $http.get('http://localhost:8080/activiti-rest/service/runtime/tasks?assignee=' + $stateParams.username);
+		}
+
+		getTaskForm.$inject = ['$http', '$stateParams'];
+		function getTaskForm($http, $stateParams){
+			return $http.get('http://localhost:8080/activiti-rest/service/form/form-data?taskId=' + $stateParams.taskId);
 		}
 
 		getTask.$inject = ['$http', '$stateParams'];
 		function getTask($http, $stateParams){
 			return $http.get('http://localhost:8080/activiti-rest/service/runtime/tasks/' + $stateParams.taskId);
+		}
+
+		getTaskVariables.$inject = ['$http', '$stateParams'];
+		function getTaskVariables($http, $stateParams){
+			return $http.get('http://localhost:8080/activiti-rest/service/runtime/tasks/' + $stateParams.taskId + '/variables');
 		}
 
 	}

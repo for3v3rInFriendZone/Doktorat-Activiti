@@ -7,7 +7,7 @@
 				<br/><br/><br/><br/>
 				<div class="panel panel-info">
 		            <div class="panel-heading text-center">
-		              <h3 class="panel-title">Tasks</h3>
+		              <h3 class="panel-title">{{utc.task.name}}</h3>
 		            </div>
 		            <div class="panel-body">
 		              <div class="row">
@@ -17,13 +17,20 @@
 				                  <br/>
 				                  <table class="table table-user-information">
 				                    <tbody>
-				                      <tr>
-				                        <td> <b>Biografija: </b> </td>
-				                        <td><input type="checkbox" ng-model="utc.params.biografija"></td>
-				                      </tr>
-				                      <tr>
-				                        <td><b>Naslov teme: </b></td>
-				                        <td><input type="text" ng-model="utc.params.naslovTeme"></td>
+				                      <tr ng-repeat="form in utc.taskForm">
+				                        <td ng-if="form.required == true"> <b>{{form.name}} <span style="color: red;">* </span> </b> </td>
+																<td ng-if="form.required == false"> <b>{{form.name}} </b> </td>
+				                        <td ng-if="form.type == 'boolean' && form.writable == true"><input class="form-control" type="checkbox" ng-model="utc.params[form.id]" /></td>
+																<td ng-if="(form.type == 'string' || form.type == 'long') && form.writable == true"><input class="form-control" type="text" ng-model="utc.params[form.id]" /></td>
+
+																<td ng-if="form.type == 'boolean' && form.writable == false"><input class="form-control" type="checkbox" ng-model="utc.params[form.id]" disabled/></td>
+																<td ng-if="(form.type == 'string' || form.type == 'long') && form.writable == false"><input class="form-control" type="text" ng-model="utc.params[form.id]" disabled/></td>
+
+																<td ng-if="form.type == 'enum' && form.writable == true">
+																	<div ng-repeat="enumObject in form.enumValues">
+																		{{enumObject.name}} <input type="radio" name="radio1" value="{{enumObject.id}}" ng-model="utc.params[enumObject.id]" /> &nbsp&nbsp&nbsp&nbsp
+																	</div>
+																</td>
 				                      </tr>
 				                    </tbody>
 		                  		</table>

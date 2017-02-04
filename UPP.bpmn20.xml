@@ -10,7 +10,7 @@
       <extensionElements>
         <activiti:formProperty id="polozeni_ispiti" name="Uverenje o polozenim ispitima" type="boolean" variable="polozeni_ispiti" required="true"></activiti:formProperty>
         <activiti:formProperty id="kvalifikacioni_ispit_i_istrazivacki_rad" name="Uverenje o polozenom kvalifikacionom ispitu i istrazivackom studijskom radu" type="boolean" variable="kvalifikacioni_ispit_i_istrazivacki_rad" required="true"></activiti:formProperty>
-        <activiti:formProperty id="izvod_maticne" name="Izvod iz maticne knjige rodjenih" type="boolean" variable="izvod_maticne"></activiti:formProperty>
+        <activiti:formProperty id="izvod_maticne" name="Izvod iz maticne knjige rodjenih" type="boolean" variable="izvod_maticne" required="true"></activiti:formProperty>
         <activiti:formProperty id="biografija" name="Biografija" type="boolean" variable="biografija" required="true"></activiti:formProperty>
         <activiti:formProperty id="bibliografija" name="Bibliografija" type="boolean" variable="bibliografija" required="true"></activiti:formProperty>
         <activiti:formProperty id="kopija_diplome_os" name="Kopija diplome osnovnih studija" type="boolean" variable="kopija_diplome_os" required="true"></activiti:formProperty>
@@ -22,16 +22,16 @@
     </userTask>
     <userTask id="proveraPodDoc" name="Provera podnete dokumentacije." activiti:assignee="nadRef">
       <extensionElements>
-        <activiti:formProperty id="uvi" name="Uvernje o polozenim ispitima" type="boolean" expression="${polozeni_ispiti}" writable="false"></activiti:formProperty>
-        <activiti:formProperty id="upkiisr" name="Uverenje o polozenom kvalifikacionom ispitu i istrazivackom studijskom radu" type="boolean" expression="${kvalifikacioni_ispit_i_istrazivacki_rad}" writable="false"></activiti:formProperty>
-        <activiti:formProperty id="imkr" name="Izvod iz maticne knjige rodjenih" type="boolean" expression="${izvod_maticne}" writable="false"></activiti:formProperty>
-        <activiti:formProperty id="bio" name="Biografija" type="boolean" expression="${biografija}" writable="false"></activiti:formProperty>
-        <activiti:formProperty id="bibli" name="Bibliografija" type="boolean" expression="${bibliografija}" writable="false"></activiti:formProperty>
-        <activiti:formProperty id="kdozos" name="Diploma osnovnih studija" type="boolean" expression="${kopija_diplome_os}" writable="false"></activiti:formProperty>
-        <activiti:formProperty id="kdozms" name="Diploma sa magistarskih studija" type="boolean" expression="${kopija_diplome_ms}" writable="false"></activiti:formProperty>
-        <activiti:formProperty id="lp" name="Licni podaci" type="boolean" expression="${licni_podaci}" writable="false"></activiti:formProperty>
-        <activiti:formProperty id="sm" name="Saglasnost mentora" type="boolean" expression="${saglasnost_mentora}" writable="false"></activiti:formProperty>
-        <activiti:formProperty id="prikazTeme" name="Naziv teme doktorske disertacije" type="string" expression="${temadd}" writable="false"></activiti:formProperty>
+        <activiti:formProperty id="polozeni_ispiti" name="Uvernje o polozenim ispitima" type="boolean" expression="${polozeni_ispiti}" writable="false"></activiti:formProperty>
+        <activiti:formProperty id="kvalifikacioni_ispit_i_istrazivacki_rad" name="Uverenje o polozenom kvalifikacionom ispitu i istrazivackom studijskom radu" type="boolean" expression="${kvalifikacioni_ispit_i_istrazivacki_rad}" writable="false"></activiti:formProperty>
+        <activiti:formProperty id="izvod_maticne" name="Izvod iz maticne knjige rodjenih" type="boolean" expression="${izvod_maticne}" writable="false"></activiti:formProperty>
+        <activiti:formProperty id="biografija" name="Biografija" type="boolean" expression="${biografija}" writable="false"></activiti:formProperty>
+        <activiti:formProperty id="bibliografija" name="Bibliografija" type="boolean" expression="${bibliografija}" writable="false"></activiti:formProperty>
+        <activiti:formProperty id="kopija_diplome_os" name="Diploma osnovnih studija" type="boolean" expression="${kopija_diplome_os}" writable="false"></activiti:formProperty>
+        <activiti:formProperty id="kopija_diplome_ms" name="Diploma sa magistarskih studija" type="boolean" expression="${kopija_diplome_ms}" writable="false"></activiti:formProperty>
+        <activiti:formProperty id="licni_podaci" name="Licni podaci" type="boolean" expression="${licni_podaci}" writable="false"></activiti:formProperty>
+        <activiti:formProperty id="saglasnost_mentora" name="Saglasnost mentora" type="boolean" expression="${saglasnost_mentora}" writable="false"></activiti:formProperty>
+        <activiti:formProperty id="temadd" name="Naslov teme doktorske disertacije" type="string" expression="${temadd}" writable="false"></activiti:formProperty>
         <activiti:formProperty id="potvrdiZahtev" name="Potvrdi zahtev" type="enum" required="true">
           <activiti:value id="da" name="Da"></activiti:value>
           <activiti:value id="ne" name="Ne"></activiti:value>

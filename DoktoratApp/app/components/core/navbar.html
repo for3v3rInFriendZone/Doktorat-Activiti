@@ -18,7 +18,7 @@
 			id="bs-example-navbar-collapse-1">
 			<ul class="nav navbar-nav navbar-right">
 				<li class="page-scroll"><a ng-click="ccr.goToSection('portfolio')">Portfolio</a></li>
-				<li ng-class="{active: nbc.isActive('main.userTasks')}" ng-show="nbc.user"> <a ng-click="nbc.toUserTasks()">Tasks &nbsp <b style="color: lightblue;">( {{nbc.numberOfTasks}} )</b></a></li>
+				<li ng-class="{active: nbc.isActive('main.userTasks') || nbc.isActive('main.userTask')}" ng-show="nbc.user"> <a ng-click="nbc.toUserTasks()">Tasks &nbsp <span class="badge">{{nbc.numberOfTasks}}</span> </a></li>
 				<li class="page-scroll" ng-show="!nbc.user"> <a ui-sref="login"> <i class="fa fa-sign-in" style="font-size: 16px;"> </i> Sign in </a> </li>
 				<li ng-class="{active: nbc.isActive('main.userPage') || nbc.isActive('main.userEdit')}" class="page-scroll" ng-show="nbc.user"> <a ng-click="nbc.userPage()"> <i> {{nbc.user.firstName}} &nbsp {{nbc.user.lastName}} </i> </a> </li>
 				<li class="page-scroll" ng-show="nbc.user"> <a ng-click="nbc.signOut()"> Logout <i class="fa fa-sign-out"></i> </a></li>
