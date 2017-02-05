@@ -21,15 +21,24 @@
 				                        <td ng-if="form.required == true"> <b>{{form.name}} <span style="color: red;">* </span> </b> </td>
 																<td ng-if="form.required == false"> <b>{{form.name}} </b> </td>
 				                        <td ng-if="form.type == 'boolean' && form.writable == true"><input class="form-control" type="checkbox" ng-model="utc.params[form.id]" /></td>
-																<td ng-if="(form.type == 'string' || form.type == 'long') && form.writable == true"><input class="form-control" type="text" ng-model="utc.params[form.id]" /></td>
+																<td ng-if="(form.type == 'string' || form.type == 'long') && form.writable == true"><input class="form-control" type="text" ng-model="utc.params[form.id]" size="42"/></td>
 
 																<td ng-if="form.type == 'boolean' && form.writable == false"><input class="form-control" type="checkbox" ng-model="utc.params[form.id]" disabled/></td>
-																<td ng-if="(form.type == 'string' || form.type == 'long') && form.writable == false"><input class="form-control" type="text" ng-model="utc.params[form.id]" disabled/></td>
+																<td ng-if="(form.type == 'string' || form.type == 'long') && form.writable == false">{{utc.params[form.id]}} </td>
 
 																<td ng-if="form.type == 'enum' && form.writable == true">
 																	<div ng-repeat="enumObject in form.enumValues">
-																		{{enumObject.name}} <input type="radio" name="radio1" value="{{enumObject.id}}" ng-model="utc.params[enumObject.id]" /> &nbsp&nbsp&nbsp&nbsp
+																		{{enumObject.name}} <input type="radio" name="radio1" value="{{enumObject.id}}" ng-model="utc.params[form.id]" /> &nbsp&nbsp&nbsp&nbsp
 																	</div>
+																</td>
+																<td ng-if="form.type == 'date' && form.writable == true">
+																	<input type="text" name="dateInsurance1" class="form-control" uib-datepicker-popup="dd-MMMM-yyyy" ng-model="utc.params[form.id]" is-open="popup1.opened" datepicker-options="options" close-text="Close" size="25" />
+																	<span class="input-group-btn">
+																	     <button type="button" class="btn btn-default" ng-click="open1()"><i class="fa fa-calendar"></i></button>
+																	</span>
+																</td>
+																<td ng-if="form.type == 'date' && form.writable == false">
+																	{{utc.params[form.id] | date:'dd/MMMM/yyyy'}}
 																</td>
 				                      </tr>
 				                    </tbody>

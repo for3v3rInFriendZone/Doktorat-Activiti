@@ -5,8 +5,8 @@
 		.module('doktorat-user')
 		.controller('UserTaskController', UserTaskController);
 
-	UserTaskController.$inject = ['$http','$state', 'localStorageService', '$fancyModal', 'taskForm', 'task', 'taskVariables'];
-	function UserTaskController($http, $state, localStorageService, $fancyModal, taskForm, task, taskVariables) {
+	UserTaskController.$inject = ['$scope', '$http','$state', 'localStorageService', '$fancyModal', 'taskForm', 'task', 'taskVariables'];
+	function UserTaskController($scope, $http, $state, localStorageService, $fancyModal, taskForm, task, taskVariables) {
 
 		var utc = this;
 		utc.user = localStorageService.get('user');
@@ -17,6 +17,32 @@
 		utc.taskVariables = taskVariables.data;
 		utc.variables = [];
 		utc.params = {};
+
+		$scope.popup1 = {
+			opened : false
+		};
+
+		$scope.open1 = function() {
+			$scope.popup1.opened = true;
+		};
+
+		$scope.popup2 = {
+			opened : false
+		};
+
+		$scope.open2 = function() {
+			$scope.popup2.opened = true;
+		};
+
+		/**
+		 * Options for a datepicker, in this instance, its for setting a min
+		 * date.
+		 */
+		$scope.options = {
+			minDate : new Date(),
+			showWeeks : true
+		};
+
 
 		initiateVariables();
 
@@ -30,7 +56,11 @@
 
 			for(var i=0; i<utc.taskForm.length; i++){
 				utc.variable = {};
-				
+
+				if(utc.taskForm[i].writable == false) {
+					continue;
+				}
+
 				utc.variable.name = utc.taskForm[i].id;
 				utc.variable.value = utc.params[utc.taskForm[i].id];
 				utc.variables.push(utc.variable);

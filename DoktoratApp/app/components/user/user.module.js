@@ -2,5 +2,5 @@
 	"use strict";
 
 	angular
-		.module('doktorat-user', ['ui.router', 'LocalStorageModule', 'vesparny.fancyModal']);
+		.module('doktorat-user', ['ui.router', 'LocalStorageModule', 'vesparny.fancyModal', 'ui.bootstrap']);
 })();
