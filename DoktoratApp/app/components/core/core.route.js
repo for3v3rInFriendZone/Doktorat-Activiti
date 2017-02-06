@@ -29,7 +29,8 @@
 			views:{
 				'main@': {
 					resolve: {
-						processes: getProcesses
+						processes: getProcesses,
+						phdStudents: getPhdStudents
 					},
 					templateUrl: "app/components/core/login.html",
 					controller: "LoginController",
@@ -42,6 +43,12 @@
 		function getProcesses($http){
 			$http.defaults.headers.common['Authorization'] = 'Basic a2VybWl0Omtlcm1pdA==';
 			return $http.get('http://localhost:8080/activiti-rest/service/runtime/process-instances?processDefinitionKey=doktoratApp');
+		}
+
+		getPhdStudents.$inject = ['$http'];
+		function getPhdStudents($http){
+			$http.defaults.headers.common['Authorization'] = 'Basic a2VybWl0Omtlcm1pdA==';
+			return $http.get('http://localhost:8080/activiti-rest/service/identity/users?memberOfGroup=studenti_doktorskih_studija');
 		}
 
 	}

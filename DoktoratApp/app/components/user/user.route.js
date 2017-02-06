@@ -50,6 +50,34 @@
 					controllerAs: "utc"
 				}
 			}
+		})
+		.state("main.userInvolvedTasks", {
+			url: '/:username/involved_tasks',
+			views:{
+				'main@': {
+					resolve: {
+						allTasks: getAllTasks,
+						allUsers: getAllUsers
+					},
+					templateUrl: "app/components/user/taskInvolvedList.html",
+					controller: "UserTaskInvolvedController",
+					controllerAs: "utic"
+				}
+			}
+		})
+		.state("main.userInvolvedClaimTask", {
+			url: '/:username/involved_task/:taskId',
+			views:{
+				'main@': {
+					resolve: {
+						allTasks: getAllTasks,
+						allUsers: getAllUsers
+					},
+					templateUrl: "app/components/user/claimInvolvedTask.html",
+					controller: "UserTaskInvolvedController",
+					controllerAs: "utic"
+				}
+			}
 		});
 
 
@@ -71,6 +99,19 @@
 		getTaskVariables.$inject = ['$http', '$stateParams'];
 		function getTaskVariables($http, $stateParams){
 			return $http.get('http://localhost:8080/activiti-rest/service/runtime/tasks/' + $stateParams.taskId + '/variables');
+		}
+
+		getAllTasks.$inject = ['$http'];
+		function getAllTasks($http){
+			return $http.get('http://localhost:8080/activiti-rest/service/runtime/tasks');
+		}
+
+		getAllUsers.$inject = ['$http'];
+		function getAllUsers($http){
+			return $http.get('http://localhost:8080/activiti-rest/service/identity/users')
+			.then(function(res) {
+				return $http.get('http://localhost:8080/activiti-rest/service/identity/users?size=' + res.data.total);
+			})
 		}
 
 	}

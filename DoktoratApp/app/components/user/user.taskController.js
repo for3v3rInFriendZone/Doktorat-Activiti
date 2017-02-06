@@ -5,8 +5,8 @@
 		.module('doktorat-user')
 		.controller('UserTaskController', UserTaskController);
 
-	UserTaskController.$inject = ['$scope', '$http','$state', 'localStorageService', '$fancyModal', 'taskForm', 'task', 'taskVariables'];
-	function UserTaskController($scope, $http, $state, localStorageService, $fancyModal, taskForm, task, taskVariables) {
+	UserTaskController.$inject = ['$scope', '$rootScope', '$http','$state', 'localStorageService', '$fancyModal', 'taskForm', 'task', 'taskVariables'];
+	function UserTaskController($scope, $rootScope, $http, $state, localStorageService, $fancyModal, taskForm, task, taskVariables) {
 
 		var utc = this;
 		utc.user = localStorageService.get('user');
@@ -52,6 +52,26 @@
 			}
 		}
 
+		function initiateNumberOfInvolvedTasks() {
+
+			$http.get('http://localhost:8080/activiti-rest/service/runtime/tasks')
+			.then(function (response) {
+				for(var i=0; i<response.data.data.length; i++) {
+					if(response.data.data[i].assignee == null) {
+						$http.get('http://localhost:8080/activiti-rest/service/runtime/tasks/' + response.data.data[i].id + '/identitylinks')
+						.then(function(response2) {
+							for(var a=0; a<response2.data.length; a++){
+								if(response2.data[a].user == utc.user.id) {
+									$rootScope.numberOfInvolvedTasks = $rootScope.numberOfInvolvedTasks + 1;
+								}
+							}
+						});
+					}
+				}
+
+			});
+		}
+
 		function completeTask() {
 
 			for(var i=0; i<utc.taskForm.length; i++){
@@ -72,7 +92,11 @@
 				};
 
 			$http.post('http://localhost:8080/activiti-rest/service/runtime/tasks/' + $state.params.taskId, payload).then(function(resSuccess){
-				$state.go('main.userTasks', {username: utc.user.id});
+				$http.get('http://localhost:8080/activiti-rest/service/runtime/tasks?assignee=' + utc.user.id).then(function(response){
+					$rootScope.numberOfUserTasks = response.data.total;
+					initiateNumberOfInvolvedTasks();
+				})
+				$state.go('main.user', {username: utc.user.id});
 			});
 
 		}

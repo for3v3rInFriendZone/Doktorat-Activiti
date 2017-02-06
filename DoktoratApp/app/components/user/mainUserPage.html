@@ -7,7 +7,7 @@
 				<br/><br/><br/><br/>
 				<div class="panel panel-info">
 		            <div class="panel-heading text-center">
-		              <h3 class="panel-title">{{utc.task.name}}</h3>
+		              <h3 class="panel-title"><u>{{utc.task.name}}</u></h3>
 		            </div>
 		            <div class="panel-body">
 		              <div class="row">
@@ -32,7 +32,7 @@
 																	</div>
 																</td>
 																<td ng-if="form.type == 'date' && form.writable == true">
-																	<input type="text" name="dateInsurance1" class="form-control" uib-datepicker-popup="dd-MMMM-yyyy" ng-model="utc.params[form.id]" is-open="popup1.opened" datepicker-options="options" close-text="Close" size="25" />
+																	<input type="text" name="dateInsurance1" class="form-control" uib-datepicker-popup="dd-MMMM-yyyy" ng-model="utc.params[form.id]" is-open="popup1.opened" datepicker-options="options" close-text="Close" size="25" readonly/>
 																	<span class="input-group-btn">
 																	     <button type="button" class="btn btn-default" ng-click="open1()"><i class="fa fa-calendar"></i></button>
 																	</span>
