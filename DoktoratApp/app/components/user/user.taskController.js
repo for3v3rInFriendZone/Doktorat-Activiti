@@ -95,7 +95,7 @@
 				$http.get('http://localhost:8080/activiti-rest/service/runtime/tasks?assignee=' + utc.user.id).then(function(response){
 					$rootScope.numberOfUserTasks = response.data.total;
 					initiateNumberOfInvolvedTasks();
-				})
+				});
 				$state.go('main.user', {username: utc.user.id});
 			});
 
