@@ -20,6 +20,7 @@
 		nbc.user = localStorageService.get('user');
 		nbc.toUserTasks = toUserTasks;
 		nbc.toUserInvolvedTasks = toUserInvolvedTasks;
+		nbc.toGroupTasks = toGroupTasks;
 
 
 		$http.get('http://localhost:8080/activiti-rest/service/runtime/tasks?assignee=' + nbc.user.id).then(function(response){
@@ -75,6 +76,10 @@
 
 		function toUserInvolvedTasks() {
 			$state.go('main.userInvolvedTasks', {username: nbc.user.id});
+		}
+
+		function toGroupTasks() {
+			$state.go('main.userGroupTasks', {username: nbc.user.id});
 		}
 
 	}

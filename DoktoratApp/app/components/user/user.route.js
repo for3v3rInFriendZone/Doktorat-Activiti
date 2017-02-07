@@ -78,6 +78,32 @@
 					controllerAs: "utic"
 				}
 			}
+		})
+		.state("main.userGroupTasks", {
+			url: '/:username/group_tasks',
+			views:{
+				'main@': {
+					resolve: {
+						allTasks: getAllTasks,
+					},
+					templateUrl: "app/components/user/groupTasks.html",
+					controller: "UserGroupTaskController",
+					controllerAs: "ugtc"
+				}
+			}
+		})
+		.state("main.userGroupClaimTask", {
+			url: '/:username/group_task/:taskId',
+			views:{
+				'main@': {
+					resolve: {
+						allTasks: getAllTasks
+					},
+					templateUrl: "app/components/user/groupTasks.html",
+					controller: "UserGroupTaskController",
+					controllerAs: "ugtc"
+				}
+			}
 		});
 
 
@@ -111,7 +137,15 @@
 			return $http.get('http://localhost:8080/activiti-rest/service/identity/users')
 			.then(function(res) {
 				return $http.get('http://localhost:8080/activiti-rest/service/identity/users?size=' + res.data.total);
-			})
+			});
+		}
+
+		getAllGroups.$inject = ['$http'];
+		function getAllGroups($http){
+			return $http.get('http://localhost:8080/activiti-rest/service/identity/groups')
+			.then(function(res) {
+				return $http.get('http://localhost:8080/activiti-rest/service/identity/groups?size=' + res.data.total);
+			});
 		}
 
 	}

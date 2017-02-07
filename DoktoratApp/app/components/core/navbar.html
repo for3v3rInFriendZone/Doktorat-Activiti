@@ -19,7 +19,7 @@
 			<ul class="nav navbar-nav navbar-right">
 				<li class="page-scroll"><a ng-click="ccr.goToSection('portfolio')">Portfolio</a></li>
 				<li style="color: lightblue;" ng-class="{active: nbc.isActive('main.userTasks') || nbc.isActive('main.userTask')}" ng-show="nbc.user"> <a ng-click="nbc.toUserTasks()">Zadaci &nbsp <span class="badge">{{numberOfUserTasks}}</span> </a></li>
-				<li ng-show="nbc.user"> <a ng-click="">Grupni zadaci &nbsp <span class="badge">{{numberOfGroupTasks}}</span> </a></li>
+				<li ng-class="{active: nbc.isActive('main.userGroupTasks')}"ng-show="nbc.user"> <a ng-click="nbc.toGroupTasks()">Grupni zadaci &nbsp <span class="badge">{{numberOfGroupTasks}}</span> </a></li>
 				<li ng-class="{active: nbc.isActive('main.userInvolvedTasks') || nbc.isActive('main.userInvolvedClaimTask')}" ng-show="nbc.user"> <a ng-click="nbc.toUserInvolvedTasks()">Uključen u zadatak &nbsp <span class="badge">{{numberOfInvolvedTasks}}</span> </a></li>
 				<li class="page-scroll" ng-show="!nbc.user"> <a ui-sref="login"> <i class="fa fa-sign-in" style="font-size: 16px;"> </i> Sign in </a> </li>
 				<li ng-class="{active: nbc.isActive('main.userPage') || nbc.isActive('main.userEdit')}" class="page-scroll" ng-show="nbc.user"> <a ng-click="nbc.userPage()"> <i> {{nbc.user.firstName}} &nbsp {{nbc.user.lastName}} </i> </a> </li>
