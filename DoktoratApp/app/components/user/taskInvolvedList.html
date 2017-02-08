@@ -19,11 +19,13 @@
                             <thead>
                               <th class="text-center">Naziv</th>
                               <th class="text-center">Datum stvaranja</th>
+															<th class="text-center">Preuzimanje zadatka</th>
                             </thead>
 				                    <tbody>
-				                      <tr ng-repeat="task in utic.listOfTasks track by $index">
-				                        <td ng-click="utic.viewTask(task.id)"> {{task.name}} </td>
-				                        <td ng-click="utic.viewTask(task.id)">{{task.createTime | date:'dd/MMMM/yyyy'}} </td>
+				                      <tr ng-repeat="task in utic.allTasksForUser track by $index">
+				                        <td> {{task.name}} </td>
+				                        <td> {{task.createTime | date:'dd/MMMM/yyyy'}} </td>
+																<td> <button type="button" ng-click="utic.claimTask(task.id)" class="btn btn-sm btn-info" data-toggle="tooltip" data-placement="bottom">Preuzmi zadatak &nbsp<i class="fa fa-check"></i></button> </td>
 				                      </tr>
 				                    </tbody>
 		                  		</table>

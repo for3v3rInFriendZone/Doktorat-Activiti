@@ -5,16 +5,17 @@
 		.module('doktorat-user')
 		.controller('UserController', UserController);
 
-	UserController.$inject = ['$http', '$state', 'localStorageService', 'listOfTasks'];
-	function UserController($http, $state, localStorageService, listOfTasks) {
+	UserController.$inject = ['$http', '$state', '$rootScope','localStorageService', 'listOfTasks', 'allTasksForUser'];
+	function UserController($http, $state, $rootScope, localStorageService, listOfTasks, allTasksForUser) {
 
 		var ucr = this;
 		ucr.user = localStorageService.get('user');
 		ucr.currentState = $state.current.name;
 		ucr.listOfTasks = listOfTasks.data.data;
 		ucr.viewTask = viewTask;
-		ucr.closeModal = closeModal;
-		ucr.savePass = savePass;
+
+		$rootScope.numberOfUserTasks = listOfTasks.data.total;
+		$rootScope.numberOfInvolvedTasks = allTasksForUser.data.total;
 
 		/**
 		 * Check if user is loged in.
@@ -31,21 +32,6 @@
 
 		function viewTask(id) {
 			$state.go('main.userTask', {username: ucr.user.id, taskId: id});
-		}
-
-		function closeModal() {
-			$fancyModal.close();
-		}
-
-		function savePass() {
-
-			if(ucr.newPassword == ucr.rePass) {
-				localStorageService.set('newPassword', ucr.newPassword);
-			} else {
-				ucr.notEqualPass = true;
-				return;
-			}
-			$fancyModal.close();
 		}
 	}
 
