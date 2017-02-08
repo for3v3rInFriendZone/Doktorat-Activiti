@@ -5,8 +5,8 @@
 		.module('doktorat-user')
 		.controller('UserTaskController', UserTaskController);
 
-	UserTaskController.$inject = ['$scope', '$rootScope', '$http','$state', 'localStorageService', '$fancyModal', 'taskForm', 'task', 'taskVariables'];
-	function UserTaskController($scope, $rootScope, $http, $state, localStorageService, $fancyModal, taskForm, task, taskVariables) {
+	UserTaskController.$inject = ['$scope', '$rootScope', '$http','$state', 'localStorageService', 'taskForm', 'task', 'taskVariables', 'ftnProfessors'];
+	function UserTaskController($scope, $rootScope, $http, $state, localStorageService, taskForm, task, taskVariables, ftnProfessors) {
 
 		var utc = this;
 		utc.user = localStorageService.get('user');
@@ -16,7 +16,13 @@
 		utc.completeTask = completeTask;
 		utc.taskVariables = taskVariables.data;
 		utc.variables = [];
+		utc.ftnProfessors = ftnProfessors.data.data;
 		utc.params = {};
+		utc.taskSastanak = false;
+
+		if(utc.task.name == 'Sastanak nastavno-naucnog veca.' || utc.task.name == 'Predlaganje clanova komisije za ocenu i odbranu.')  {
+			utc.taskSastanak = true;
+		}
 
 		$scope.popup1 = {
 			opened : false
@@ -72,12 +78,11 @@
 				};
 
 			$http.post('http://localhost:8080/activiti-rest/service/runtime/tasks/' + $state.params.taskId, payload).then(function(resSuccess){
-				
+
 				$state.go('main.user', {username: utc.user.id});
 			});
 
 		}
-
 
 	}
 

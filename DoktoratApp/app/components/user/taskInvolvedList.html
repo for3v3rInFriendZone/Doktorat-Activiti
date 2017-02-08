@@ -15,7 +15,7 @@
 			                <div class="form-group">
 				                <div class="col-sm-8 col-sm-offset-2">
 				                  <br/>
-				                  <table class="table table-hover table-user-information" ng-if="utic.listOfTasks.length != 0">
+				                  <table class="table table-hover table-user-information" ng-if="utic.allTasksForUser.length != 0">
                             <thead>
                               <th class="text-center">Naziv</th>
                               <th class="text-center">Datum stvaranja</th>
@@ -29,7 +29,7 @@
 				                      </tr>
 				                    </tbody>
 		                  		</table>
-													<div ng-if="utic.listOfTasks.length == 0">
+													<div ng-if="utic.allTasksForUser.length == 0">
 														<img src="https://emptyensemble.com/wp-content/themes/emptyensemble2015/assets/images/empty_ensemble_empty_set_logo.png" width="200px" height="200px">
 													  <label class="form-control" style="color: blue;">Zao nam je, trenutno nemate zadatke.</label>
 													</div>

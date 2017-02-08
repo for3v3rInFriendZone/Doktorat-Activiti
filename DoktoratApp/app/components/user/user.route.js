@@ -45,7 +45,8 @@
 					resolve: {
 						taskForm: getTaskForm,
 						task: getTask,
-						taskVariables: getTaskVariables
+						taskVariables: getTaskVariables,
+						ftnProfessors: getFtnProfessors
 					},
 					templateUrl: "app/components/user/mainUserPage.html",
 					controller: "UserTaskController",
@@ -92,6 +93,12 @@
 		function getAllTasksForUser($http, $stateParams){
 			return $http.get('http://localhost:8080/activiti-rest/service/runtime/tasks?candidateUser=' + $stateParams.username);
 		}
+
+		getFtnProfessors.$inject = ['$http', '$stateParams'];
+		function getFtnProfessors($http, $stateParams){
+			return $http.get('http://localhost:8080/activiti-rest/service/identity/users?memberOfGroup=profesoriFtn');
+		}
+
 
 	}
 })();
