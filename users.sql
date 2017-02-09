@@ -4,7 +4,7 @@ INSERT INTO act_id_user(
     
 INSERT INTO act_id_user(
             id_, rev_, first_, last_, email_, pwd_)
-    VALUES ('doktorant1', 2, 'Doktor1', 'Doktoric1', 'doktor1@gmail.com', 'doktorant1');
+    VALUES ('doktorant1', 2, 'Doktor1', 'Doktoric1', 'strile93@hotmail.com', 'doktorant1');
     
 INSERT INTO act_id_user(
             id_, rev_, first_, last_, email_, pwd_)
@@ -16,7 +16,7 @@ INSERT INTO act_id_user(
     
 INSERT INTO act_id_user(
             id_, rev_, first_, last_, email_, pwd_)
-    VALUES ('mentor', 2, 'Moma', 'Mentor', 'moma@gmail.com', 'mentor');
+    VALUES ('mentor', 2, 'Moma', 'Mentor', 'strile93@hotmail.com', 'mentor');
 
 INSERT INTO act_id_user(
             id_, rev_, first_, last_, email_, pwd_)
@@ -56,11 +56,11 @@ INSERT INTO act_id_user(
 
 INSERT INTO act_id_user(
             id_, rev_, first_, last_, email_, pwd_)
-    VALUES ('doktorant2', 2, 'Doktor2', 'Doktoric2', 'doktor2@gmail.com', 'doktorant2');
+    VALUES ('doktorant2', 2, 'Doktor2', 'Doktoric2', 'strile93@hotmail.com', 'doktorant2');
 
 INSERT INTO act_id_user(
             id_, rev_, first_, last_, email_, pwd_)
-    VALUES ('doktorant3', 2, 'Doktor3', 'Doktor3', 'doktor3@gmail.com', 'doktorant3');
+    VALUES ('doktorant3', 2, 'Doktor3', 'Doktor3', 'strile93@hotmail.com', 'doktorant3');
 
 ----------------------------------------------------------------------------------------------------
 
@@ -103,10 +103,6 @@ INSERT INTO public.act_id_membership(
 INSERT INTO public.act_id_membership(
             user_id_, group_id_)
     VALUES ('dekan', 'univerzitet');
-
-INSERT INTO public.act_id_membership(
-            user_id_, group_id_)
-    VALUES ('dekan', 'nastNaucno');
 
 INSERT INTO public.act_id_membership(
             user_id_, group_id_)
