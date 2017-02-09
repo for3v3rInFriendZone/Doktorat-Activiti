@@ -60,6 +60,11 @@
 
 		function completeTask() {
 
+			if(utc.form.$invalid) {
+				utc.submitted = true;
+				return;
+			}
+
 			for(var i=0; i<utc.taskForm.length; i++){
 				utc.variable = {};
 

@@ -15,6 +15,7 @@
 		nbc.user = localStorageService.get('user');
 		nbc.toUserTasks = toUserTasks;
 		nbc.toUserInvolvedTasks = toUserInvolvedTasks;
+		nbc.toMainPage = toMainPage;
 
 		initiateNumberOfInvolvedTasks();
 		initiateNumberOfUserTasks();
@@ -54,6 +55,10 @@
 
 		function toUserInvolvedTasks() {
 			$state.go('main.userInvolvedTasks', {username: nbc.user.id});
+		}
+
+		function toMainPage() {
+			$state.go('main.user', {username: nbc.user.id});
 		}
 
 	}

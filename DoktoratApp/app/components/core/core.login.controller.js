@@ -24,6 +24,7 @@
 
 		function submitForm() {
 
+		//	$http.defaults.headers.common['Authorization'] = 'Basic ' + $base64.encode(ulc.username +':' + ulc.password);
 			$http.get('http://localhost:8080/activiti-rest/service/identity/users/' + ulc.username)
 			.then(function(dataSuccess){
 				ulc.user = dataSuccess.data;
