@@ -23,7 +23,7 @@
 				                    <tbody>
 				                      <tr ng-repeat="task in ucr.listOfTasks">
 				                        <td ng-click="ucr.viewTask(task.id)"> {{task.name}} </td>
-				                        <td ng-click="ucr.viewTask(task.id)">{{task.createTime | date:'dd/MMMM/yyyy'}} </td>
+				                        <td ng-click="ucr.viewTask(task.id)">{{task.createTime | date:'dd/MMMM/yyyy hh:mm'}} </td>
 				                      </tr>
 				                    </tbody>
 		                  		</table>
