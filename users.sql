@@ -24,27 +24,27 @@ INSERT INTO act_id_user(
 
 INSERT INTO act_id_user(
             id_, rev_, first_, last_, email_, pwd_)
-    VALUES ('ftnProfesor1', 2, 'Djordje', 'Dragic', 'djole@gmail.com', 'test');
+    VALUES ('ftnProfesor1', 2, 'Djordje', 'Dragic', 'strile93@hotmail.com', 'test');
 
 INSERT INTO act_id_user(
             id_, rev_, first_, last_, email_, pwd_)
-    VALUES ('ftnProfesor2', 2, 'Petar', 'Misic', 'pera@gmail.com', 'test');
+    VALUES ('ftnProfesor2', 2, 'Petar', 'Misic', 'strile93@hotmail.com', 'test');
 
 INSERT INTO act_id_user(
             id_, rev_, first_, last_, email_, pwd_)
-    VALUES ('ftnProfesor3', 2, 'Ivan', 'Simic', 'ivan@gmail.com', 'test');
+    VALUES ('ftnProfesor3', 2, 'Ivan', 'Simic', 'strile93@hotmail.com', 'test');
 
 INSERT INTO act_id_user(
             id_, rev_, first_, last_, email_, pwd_)
-    VALUES ('ftnProfesor4', 2, 'Nenad', 'Simovic', 'nenad@gmail.com', 'test');
+    VALUES ('ftnProfesor4', 2, 'Nenad', 'Simovic', 'strile93@hotmail.com', 'test');
 
 INSERT INTO act_id_user(
             id_, rev_, first_, last_, email_, pwd_)
-    VALUES ('ftnProfesor5', 2, 'Bosko', 'Dragic', 'bole@gmail.com', 'test');
+    VALUES ('ftnProfesor5', 2, 'Bosko', 'Dragic', 'strile93@hotmail.com', 'test');
 
 INSERT INTO act_id_user(
             id_, rev_, first_, last_, email_, pwd_)
-    VALUES ('ftnProfesor6', 2, 'Dragan', 'Petrovic', 'dragan@gmail.com', 'test');
+    VALUES ('ftnProfesor6', 2, 'Dragan', 'Petrovic', 'strile93@hotmail.com', 'test');
 
 INSERT INTO act_id_user(
             id_, rev_, first_, last_, email_, pwd_)
