@@ -96,7 +96,7 @@
 
 		getFtnProfessors.$inject = ['$http', '$stateParams'];
 		function getFtnProfessors($http, $stateParams){
-			return $http.get('http://localhost:8080/activiti-rest/service/identity/users?memberOfGroup=profesoriFtn');
+			return $http.get('http://localhost:8080/activiti-rest/service/identity/users?memberOfGroup=profesoriFTN');
 		}
 
 

@@ -7,27 +7,31 @@
 				<br/><br/><br/><br/>
 				<div class="panel panel-info">
 		            <div class="panel-heading text-center">
-		              <h3 class="panel-title">Zadaci</h3>
+		              <h3 class="panel-title">Zadaci za grupe</h3>
 		            </div>
 		            <div class="panel-body">
 		              <div class="row">
-		              	<form class="state-form form-horizontal text-center" name="ucr.form" novalidate>
+		              	<form class="state-form form-horizontal text-center" name="ugtc.form" novalidate>
 			                <div class="form-group">
 				                <div class="col-sm-8 col-sm-offset-2">
 				                  <br/>
-				                  <table class="table table-hover table-user-information" ng-if="ucr.listOfTasks.length != 0">
+				                  <table class="table table-hover table-user-information" ng-if="ugtc.listOfTasks.length != 0">
                             <thead>
                               <th class="text-center">Naziv</th>
                               <th class="text-center">Datum stvaranja</th>
+                              <th class="text-center">Grupa</th>
+                              <th class="text-center">Preuzimanje</th>
                             </thead>
 				                    <tbody>
-				                      <tr ng-repeat="task in ucr.listOfTasks">
-				                        <td ng-click="ucr.viewTask(task.id)"> {{task.name}} </td>
-				                        <td ng-click="ucr.viewTask(task.id)">{{task.createTime | date:'dd/MMMM/yyyy HH:mm'}} </td>
+				                      <tr ng-repeat="task in ugtc.listOfTasks track by $index">
+				                        <td ng-click=""> {{task.name}} </td>
+				                        <td ng-click="">{{task.createTime | date:'dd/MMMM/yyyy'}} </td>
+                                <td ng-click="">{{task.groupName}} </td>
+                                <td> <button type="button" ng-click="ugtc.claimTask(task.taskId)" class="btn btn-sm btn-info" data-toggle="tooltip" data-placement="bottom">Preuzmi zadatak &nbsp<i class="fa fa-check"></i></button> </td>
 				                      </tr>
 				                    </tbody>
 		                  		</table>
-													<div ng-if="ucr.listOfTasks.length == 0">
+													<div ng-if="ugtc.listOfTasks.length == 0">
 														<img src="https://emptyensemble.com/wp-content/themes/emptyensemble2015/assets/images/empty_ensemble_empty_set_logo.png" width="200px" height="200px">
 													  <label class="form-control" style="color: blue;">Zao nam je, trenutno nemate zadatke.</label>
 													</div>

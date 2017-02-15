@@ -20,8 +20,7 @@
 		ulc.resultProcess = false;
 
 		initiateVariables();
-
-
+		
 		function submitForm() {
 
 		//	$http.defaults.headers.common['Authorization'] = 'Basic ' + $base64.encode(ulc.username +':' + ulc.password);

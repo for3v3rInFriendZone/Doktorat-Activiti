@@ -1,3 +1,4 @@
+r
 
 <!-- Header -->
 <section style="background-color: gray;">
@@ -12,7 +13,7 @@
 		            <div class="panel-body">
 		              <div class="row">
 		              	<form class="state-form form-horizontal text-center" name="utc.form" novalidate>
-			                <div ng-class="{'has-error':utc.submitted}"class="form-group">
+			                <div ng-class="{'has-error':utc.submitted}" class="form-group">
 				                <div class="col-sm-8 col-sm-offset-2">
 				                  <br/>
 				                  <table class="table table-user-information">
@@ -20,15 +21,15 @@
 				                      <tr ng-repeat="form in utc.taskForm">
 				                        <td ng-if="form.required == true"> <b>{{form.name}} <span style="color: red;">* </span> </b> </td>
 																<td ng-if="form.required == false"> <b>{{form.name}} </b> </td>
-				                        <td ng-if="form.type == 'boolean' && form.writable == true"><input class="form-control" type="checkbox" ng-model="utc.params[form.id]" required/></td>
+				                        <td ng-if="form.type == 'boolean' && form.writable == true"><input type="checkbox" ng-model="utc.params[form.id]" size="25" required/></td>
 																	<td ng-if="(form.type == 'string' || form.type == 'long') && form.writable == true && utc.taskSastanak != true"><input class="form-control" type="text" ng-model="utc.params[form.id]" size="42" required/></td>
 																	<td ng-if="(form.type == 'string' || form.type == 'long') && form.writable == true && utc.taskSastanak == true">
-																		<select class="form-control" name="chooseProfessor" ng-options="(proffesor.firstName + ' ' + proffesor.lastName) as (proffesor.firstName + ' ' + proffesor.lastName) for proffesor in utc.ftnProfessors track by proffesor.id" ng-model="utc.params[form.id]" required>
+																		<select class="form-control" name="chooseProfessor" ng-options="proffesor.id as (proffesor.firstName + ' ' + proffesor.lastName) for proffesor in utc.ftnProfessors track by proffesor.id" ng-model="utc.params[form.id]" required>
 																		</select>
 																	</td>
 
 
-																<td ng-if="form.type == 'boolean' && form.writable == false"><input class="form-control" type="checkbox" ng-model="utc.params[form.id]" disabled/></td>
+																<td ng-if="form.type == 'boolean' && form.writable == false"><input type="checkbox" ng-model="utc.params[form.id]" size="25" disabled/></td>
 																<td ng-if="(form.type == 'string' || form.type == 'long') && form.writable == false">{{utc.params[form.id]}} </td>
 
 																<td ng-if="form.type == 'enum' && form.writable == true">
@@ -48,9 +49,7 @@
 				                      </tr>
 				                    </tbody>
 		                  		</table>
-
 													<p ng-if="utc.submitted" class="text-center" style="color: #a94442"> Morate popuniti sva polja sa zvezdicom. </p>
-
 						    	</div>
 				              </div>
 		                </form>

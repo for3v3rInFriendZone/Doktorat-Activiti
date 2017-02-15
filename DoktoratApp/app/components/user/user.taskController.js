@@ -20,7 +20,7 @@
 		utc.params = {};
 		utc.taskSastanak = false;
 
-		if(utc.task.name == 'Sastanak nastavno-naucnog veca.' || utc.task.name == 'Predlaganje clanova komisije za ocenu i odbranu.')  {
+		if(utc.task.name == 'Predlog komisije za ocenu podobnosti teme.' || utc.task.name == 'Predlog komisije za ocenu i odbranu.' || utc.task.name == 'Doktorant bira mentora.' || utc.task.name == 'Doktorant bira drugog mentora.')  {
 			utc.taskSastanak = true;
 		}
 
