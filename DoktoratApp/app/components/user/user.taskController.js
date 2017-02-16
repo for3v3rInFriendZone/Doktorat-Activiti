@@ -53,10 +53,17 @@
 		initiateVariables();
 
 		function initiateVariables() {
-			for(var i=0; i<utc.taskVariables.length; i++) {
-				utc.params[utc.taskVariables[i].name] = utc.taskVariables[i].value;
+
+				if(utc.task.name == "Sastanak nastavno-naucnog veca." || utc.task.name == 'Sastanak nastavno-naucnog veca za KOO.') {
+					for(var a=0; a<utc.taskForm.length; a++) {
+						utc.params[utc.taskForm[a].id] = utc.taskForm[a].value;
+					}
+				} else {
+					for(var i=0; i<utc.taskVariables.length; i++) {
+						utc.params[utc.taskVariables[i].name] = utc.taskVariables[i].value;
+					}
+				}
 			}
-		}
 
 		function completeTask() {
 
